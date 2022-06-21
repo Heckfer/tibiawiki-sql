@@ -176,7 +176,15 @@ def generate_loot_statistics(conn: sqlite3.Connection):
                 kills, loot_stats = parse_loot_statistics(article.content)
                 loot_items = []
                 for entry in loot_stats:
-                    item = entry["item"]
+                    if not entry:
+                        continue
+                    try:
+                        item = entry["item"]
+                    except KeyError:
+                        item = None
+
+                    if item is None:
+                        continue
                     times = entry["times"]
                     amount = entry.get("amount", 1)
                     c.execute("SELECT article_id FROM item WHERE title LIKE ?", (item,))
