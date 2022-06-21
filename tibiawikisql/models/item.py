@@ -357,9 +357,13 @@ class Item(abc.Row, abc.Parseable, table=schema.Item):
         templates = find_templates(self._raw_attributes["storevalue"], "Store Product", recursive=True)
         self.store_offers = []
         for template in templates:
-            price = int(strip_code(template.get(1, 0)))
+            price_str = strip_code(template.get(1, 0))
+            amount_str = strip_code(template.get("amount", 1))
+            if price_str == '' or amount_str == '':
+                continue
+            price = int(price_str)
             currency = strip_code(template.get(2, "Tibia Coin"))
-            amount = int(strip_code(template.get("amount", 1)))
+            amount = int(amount_str)
             self.store_offers.append(
                 ItemStoreOffer(item_id=self.article_id, price=price, currency=currency, amount=amount),
             )
