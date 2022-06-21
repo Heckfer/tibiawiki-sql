@@ -203,7 +203,10 @@ def parse_date(value):
     try:
         dt = datetime.datetime.strptime(value, "%B %d, %Y")
     except ValueError:
-        dt = datetime.datetime.strptime(value, "%b %d, %Y")
+        try:
+            dt = datetime.datetime.strptime(value, "%b %d, %Y")
+        except ValueError:
+            dt = datetime.datetime.strptime(value, "%Y")
     return dt.date().isoformat()
 
 
