@@ -79,6 +79,7 @@ class ItemParser(BaseParser):
         "energy_attack": "energy_attack",
         "ice_attack": "ice_attack",
         "earth_attack": "earth_attack",
+        "death_attack": "death_attack",
         "weapon_type": "weapontype",
         "destructible": "destructible",
         "holds_liquid": "holdsliquid",
@@ -180,7 +181,7 @@ class ItemParser(BaseParser):
         row["sounds"] = parse_sounds(row["_raw_attributes"]["sounds"])
 
     @classmethod
-    def parse_store_value(self, row):
+    def parse_store_value(cls, row):
         if "storevalue" not in row["_raw_attributes"]:
             return
         templates = find_templates(row["_raw_attributes"]["storevalue"], "Store Product", recursive=True)

@@ -1,7 +1,7 @@
 """Defines the SQL schemas to use."""
 from sqlite3 import Connection, Cursor, Row
 from typing import Any, ClassVar
-from pypika import Query, Table as PTable
+from pypika import SQLLiteQuery as Query, Table as PTable
 
 from tibiawikisql.database import Blob, Boolean, Column, Date, ForeignKey, Integer, Real, Table, Text, \
     Timestamp
@@ -162,6 +162,15 @@ class ItemStoreOfferTable(Table, table_name="item_store_offer"):
     currency = Column(Text, nullable=False)
 
 
+class ItemProficiencyPerkTable(Table, table_name="item_proficiency_perk"):
+    """Contains weapon proficiency perks for an item."""
+    item_id = Column(ForeignKey(Integer, table="item", column="article_id"), index=True, nullable=False)
+    proficiency_level = Column(Integer, index=True, nullable=False)
+    skill_image = Column(Text, nullable=False)
+    icon = Column(Text)
+    effect = Column(Text, nullable=False)
+
+
 class CreatureDropTable(Table, table_name="creature_drop"):
     """Contains the items that a creature can drop."""
     creature_id = Column(ForeignKey(Integer, table="creature", column="article_id"), index=True, nullable=False)
@@ -302,9 +311,9 @@ class ItemKeyTable(Table, table_name="item_key"):
     article_id = Column(Integer, primary_key=True)
     title = Column(Text, unique=True)
     number = Column(Integer, unique=True)
-    item_id = Column(ForeignKey(Integer, "item", "article_id"), index=True)
+    item_id = Column(ForeignKey(Integer, "item", "article_id"), index=True, nullable=False)
     name = Column(Text)
-    material = Column(Text)
+    material = Column(Text, nullable=False)
     location = Column(Text)
     origin = Column(Text)
     notes = Column(Text)
@@ -338,7 +347,6 @@ class SpellTable(Table):
     is_promotion = Column(Boolean, default=False)
     is_wheel_spell = Column(Boolean, default=False)
     is_passive = Column(Boolean, default=False)
-    price = Column(Integer)
     cooldown = Column(Integer, nullable=True)
     cooldown2 = Column(Integer)
     cooldown3 = Column(Integer)
@@ -483,74 +491,6 @@ class NpcDestinationTable(Table, table_name="npc_destination"):
     name = Column(Text, index=True, nullable=False)
     price = Column(Integer, nullable=False)
     notes = Column(Text)
-
-
-class NpcSpellTable(Table, table_name="npc_spell"):
-    """Stores spells taught by NPCs.
-
-    Attributes:
-        npc_id: Foreign key to NPC's article ID.
-        spell_id: Foreign key to spell's article ID.
-        knight: Whether the NPC teaches the spell to knights.
-        sorcerer: Whether the NPC teaches the spell to sorcerers.
-        paladin: Whether the NPC teaches the spell to paladins.
-        druid: Whether the NPC teaches the spell to druids.
-        monk: Whether the NPC teaches the spell to monks.
-    """
-    npc_id = Column(ForeignKey(Integer, "npc", "article_id"), index=True)
-    spell_id = Column(ForeignKey(Integer, "spell", "article_id"), index=True)
-    knight = Column(Boolean, nullable=False, default=False)
-    sorcerer = Column(Boolean, nullable=False, default=False)
-    paladin = Column(Boolean, nullable=False, default=False)
-    druid = Column(Boolean, nullable=False, default=False)
-    monk = Column(Boolean, nullable=False, default=False)
-
-    @classmethod
-    def get_by_npc_id(cls, conn: Connection | Cursor, npc_id: int) -> list[Row]:
-        """Get the entries corresponding to a given NPC, with additional information about the spell.
-
-        Args:
-            conn: Connection to the database.
-            npc_id: The article ID of the NPC.
-
-        Returns:
-            A list of rows matching the parameters.
-        """
-        base_query = cls.get_base_select_query()
-        this = PTable(cls.__tablename__)
-        spell = PTable(SpellTable.__tablename__)
-        base_query = base_query.join(spell).on(this.spell_id == spell.article_id)
-        return cls.get_list_by_field(conn, "npc_id", npc_id, base_query=base_query)
-
-    @classmethod
-    def get_by_spell_id(cls, conn: Connection | Cursor, spell_id: int) -> list[Row]:
-        """Get entries matching the spell's article ID, joining additional data about the NPC.
-
-        The schema returned is compatible with the [SpellTeacher][] model.
-
-        Args:
-            conn: A connection to the database.
-            spell_id: The article ID of the spell.
-
-        Returns:
-            The rows containing the NPCs that teach the spell.
-        """
-        npc = PTable(NpcTable.__tablename__)
-        query = (
-            Query.from_(cls.__table__)
-            .select(
-                cls.__table__.npc_id,
-                npc.title.as_("npc_title"),
-                npc.city.as_("npc_city"),
-                cls.__table__.knight,
-                cls.__table__.paladin,
-                cls.__table__.sorcerer,
-                cls.__table__.druid,
-                cls.__table__.monk,
-            )
-            .join(npc).on(cls.__table__.npc_id == npc.article_id)
-        )
-        return cls.get_list_by_field(conn, "spell_id", spell_id, base_query=query)
 
 
 class OutfitTable(Table):

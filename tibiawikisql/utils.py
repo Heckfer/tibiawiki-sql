@@ -214,6 +214,7 @@ def parse_date(value: str) -> datetime.date:
     - June 28, 2019
     - Aug 21, 2014
     - May 14, 2024 17:45
+    - January 27, 2026, 16:00
 
     Args:
         value: The string containing the date.
@@ -229,6 +230,8 @@ def parse_date(value: str) -> datetime.date:
         "%Y",
         "%B %d, %Y %H:%M",
         "%b %d, %Y %H:%M",
+        "%B %d, %Y, %H:%M",
+        "%b %d, %Y, %H:%M",
         "%Y %H:%M",
     ]
     for date_format in date_formats:
@@ -292,6 +295,86 @@ def parse_loot_statistics(value: str) -> tuple[int, list[Any]]:
     kills = parse_integer(strip_code(template.get("kills", 0)))
     entries = [_parse_loot_entry(param.value.strip_code()) for param in template.params if not param.showkey]
     return kills, entries
+
+
+def parse_weapon_proficiency_name(content: str) -> dict[str, str]:
+    """Parse item-to-proficiency mappings from Template:Weapon Proficiency Name."""
+    switch = find_template(content, "#switch", partial=True, recursive=True)
+    if switch is None:
+        return {}
+
+    mappings: dict[str, str] = {}
+    for param in switch.params:
+        if not param.showkey:
+            continue
+        item_name = clean_links(str(param.name)).strip()
+        proficiency_name = clean_links(str(param.value)).strip()
+        if not item_name or item_name.lower().startswith("#default"):
+            continue
+        if not proficiency_name:
+            continue
+        mappings[item_name] = proficiency_name
+    return mappings
+
+
+def parse_weapon_proficiency_tables(content: str) -> dict[str, dict[int, list[dict[str, str | None]]]]:
+    """Parse perks grouped by proficiency name and perk level from Weapon Proficiency Tables."""
+    parsed_tables: dict[str, dict[int, list[dict[str, str | None]]]] = {}
+    heading_pattern = re.compile(r"^(={2,6})\s*(.+?)\s*\1\s*$", re.MULTILINE)
+    heading_matches = list(heading_pattern.finditer(content))
+    for idx, heading in enumerate(heading_matches):
+        section_name = mwparserfromhell.parse(heading.group(2)).strip_code().strip()
+        if not section_name:
+            continue
+
+        section_start = heading.end()
+        section_end = heading_matches[idx + 1].start() if idx + 1 < len(heading_matches) else len(content)
+        section_content = content[section_start:section_end]
+        table_template = find_template(section_content, "Weapon Proficiency Table", recursive=True)
+        if not table_template:
+            continue
+
+        levels: dict[int, list[dict[str, str | None]]] = {}
+        for param in table_template.params:
+            if not param.showkey:
+                continue
+            key = strip_code(param.name).strip().lower().replace(" ", "")
+            if not key.startswith("perk_"):
+                continue
+            try:
+                perk_level = int(key[5:])
+            except ValueError:
+                continue
+            perks: list[dict[str, str | None]] = []
+            for button in mwparserfromhell.parse(str(param.value)).ifilter_templates(recursive=True):
+                name = strip_code(button.name).strip().lower().replace("_", " ")
+                if name != "weapon proficiency button":
+                    continue
+                skill_image = _get_template_param(button, "skill_image")
+                icon = _get_template_param(button, "icon")
+                effect = _get_template_param(button, "text") or _get_template_param(button, "effect")
+                perks.append({
+                    "skill_image": skill_image,
+                    "icon": icon,
+                    "effect": effect,
+                })
+            if perks:
+                levels[perk_level] = perks
+        if levels:
+            parsed_tables[section_name] = levels
+    return parsed_tables
+
+
+def _get_template_param(template: Template, param_name: str) -> str | None:
+    """Get and normalize a template parameter."""
+    try:
+        value = strip_code(template.get(param_name))
+    except ValueError:
+        return None
+    if value is None:
+        return None
+    value = str(value).strip()
+    return value or None
 
 
 def _parse_loot_entry(entry: str) -> dict[str, str]:

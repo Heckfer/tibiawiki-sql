@@ -1,8 +1,11 @@
 import unittest
 
+import datetime
+
 from tests import load_resource
 from tibiawikisql.utils import (clean_links, client_color_to_rgb, parse_boolean, parse_float, parse_integer,
-                                parse_loot_statistics, parse_min_max, parse_sounds)
+                                parse_date, parse_loot_statistics, parse_min_max, parse_sounds,
+                                parse_weapon_proficiency_name, parse_weapon_proficiency_tables)
 
 
 class TestUtils(unittest.TestCase):
@@ -54,6 +57,9 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(parse_integer("10056"), 10056)
         self.assertEqual(parse_integer("--"), 0)
 
+    def test_parse_date_ignores_comma_separated_time(self):
+        self.assertEqual(datetime.date(2026, 1, 27), parse_date("January 27, 2026, 16:00"))
+
     def test_parse_min_max(self):
         self.assertEqual(parse_min_max("5-20"), (5, 20))
         self.assertEqual(parse_min_max("50"), (0, 50))
@@ -81,3 +87,55 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(client_color_to_rgb(3), 0x99)
         self.assertEqual(client_color_to_rgb(215), 0xffffff)
         self.assertEqual(client_color_to_rgb(216), 0)
+
+    def test_parse_weapon_proficiency_name(self):
+        content = load_resource("content_weapon_proficiency_name.txt")
+        mappings = parse_weapon_proficiency_name(content)
+
+        self.assertEqual(2, len(mappings))
+        self.assertEqual("Sanguine 1H Axe", mappings["Amber Axe"])
+        self.assertEqual("Sanguine 1H Club", mappings["Amber Cudgel"])
+        self.assertNotIn("#default", mappings)
+
+    def test_parse_weapon_proficiency_name_without_switch(self):
+        mappings = parse_weapon_proficiency_name("== Not a switch ==")
+        self.assertEqual({}, mappings)
+
+    def test_parse_weapon_proficiency_tables(self):
+        content = load_resource("content_weapon_proficiency_tables.txt")
+        tables = parse_weapon_proficiency_tables(content)
+
+        self.assertIn("Sanguine 1H Axe", tables)
+        self.assertIn("Sanguine 1H Club", tables)
+        self.assertIn(1, tables["Sanguine 1H Axe"])
+        self.assertIn(2, tables["Sanguine 1H Axe"])
+
+        perks = tables["Sanguine 1H Axe"][2]
+        self.assertEqual(3, len(perks))
+        self.assertIsNone(perks[0]["icon"])
+        self.assertEqual("Special Icon", perks[1]["icon"])
+
+    def test_parse_weapon_proficiency_tables_effect_fallback(self):
+        content = """===Sanguine 1H Axe===
+{{Weapon Proficiency Table
+|perk_1 =
+{{Weapon Proficiency Button |skill_image=Axe Skill Bonus|icon=|effect=Fallback Effect}}
+|perk_x =
+{{Weapon Proficiency Button |skill_image=Ignored|icon=|text=Ignored}}
+}}"""
+        tables = parse_weapon_proficiency_tables(content)
+        self.assertIn("Sanguine 1H Axe", tables)
+        self.assertIn(1, tables["Sanguine 1H Axe"])
+        self.assertEqual([1], list(tables["Sanguine 1H Axe"].keys()))
+        self.assertEqual("Fallback Effect", tables["Sanguine 1H Axe"][1][0]["effect"])
+
+    def test_parse_weapon_proficiency_tables_level_two_headings(self):
+        content = """==Sanguine 1H Axe==
+{{Weapon Proficiency Table
+|perk_1 =
+{{Weapon Proficiency Button |skill_image=Axe Skill Bonus|icon=|text=+1 Axe Fighting}}
+}}"""
+        tables = parse_weapon_proficiency_tables(content)
+        self.assertIn("Sanguine 1H Axe", tables)
+        self.assertIn(1, tables["Sanguine 1H Axe"])
+        self.assertEqual("+1 Axe Fighting", tables["Sanguine 1H Axe"][1][0]["effect"])

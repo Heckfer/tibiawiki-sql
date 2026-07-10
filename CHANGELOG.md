@@ -1,5 +1,33 @@
 # Changelog
 
+## 8.0.1 (2026-06-16)
+
+- Add support for new NPC transport template.
+- Add support for new update date format.
+- Add argument to print parsing errors to file.
+
+## 8.0.0 (2026-02-21)
+
+- Spell changes
+    - Remove `npc_spell` table.
+    - Remove spell teacher relations from API models (`Npc.teaches`, `Spell.taught_by`).
+    - Remove spell purchase price (`spell.price`) from parser, schema and models.
+    - Remove spell-offer generation from `Module:ItemPrices/spelldata`.
+- Creature changes
+    - Fix elemental modifier mapping: `energyDmgMod` now maps to `modifier_energy` and `iceDmgMod` to `modifier_ice`.
+- Item changes
+    - Add missing item infobox mapping for `death_attack`.
+    - Add weapon proficiency perks.
+    - Add `proficiency_perks` to `Item` (stored in `item_proficiency_perk`).
+
+## 7.0.3 (2025-07-28)
+
+- Fix SQL generation not working on Docker due to not having the `CONCAT` SQLite extension.
+
+## 7.0.2 (2025-06-09)
+
+- Fix key's `item_id` not being saved correctly.
+
 ## 7.0.1 (2025-05-19)
 
 - Add `vocation` and `elemental_bond` to item attributes.

@@ -3,7 +3,9 @@ from typing import Any
 
 import pydantic
 from pydantic import BaseModel, Field
-from pypika import Parameter, Query, Table
+from pypika import Parameter, Table, SQLLiteQuery as Query
+from pypika.functions import Concat
+from pypika.terms import LiteralValue, ValueWrapper
 from typing_extensions import Self
 
 from tibiawikisql.api import WikiEntry
@@ -13,6 +15,7 @@ from tibiawikisql.schema import (
     CreatureDropTable,
     ItemAttributeTable,
     ItemKeyTable,
+    ItemProficiencyPerkTable,
     ItemSoundTable,
     ItemStoreOfferTable,
     ItemTable,
@@ -89,6 +92,20 @@ class ItemQuestReward(BaseModel):
     quest_title: str
     """The title of the quest."""
 
+
+class ItemProficiencyPerk(BaseModel):
+    """A weapon proficiency perk for an item."""
+
+    proficiency_level: int
+    """The proficiency level where this perk is unlocked."""
+    skill_image: str
+    """The image name representing the related skill."""
+    icon: str | None = None
+    """The icon name of the perk, if any."""
+    effect: str
+    """The perk's effect text."""
+
+
 class Item(WikiEntry, WithVersion, WithStatus, WithImage, RowModel, table=ItemTable):
     """Represents an Item."""
 
@@ -141,6 +158,9 @@ class Item(WikiEntry, WithVersion, WithStatus, WithImage, RowModel, table=ItemTa
     sounds: list[str] = Field(default_factory=list)
     """List of sounds made when using the item."""
     store_offers: list[ItemStoreOffer] = Field(default_factory=list)
+    """List of store offers for this item."""
+    proficiency_perks: list[ItemProficiencyPerk] = Field(default_factory=list)
+    """List of weapon proficiency perks for this item."""
 
     @property
     def attributes_dict(self) -> dict[str, str]:
@@ -274,6 +294,14 @@ class Item(WikiEntry, WithVersion, WithStatus, WithImage, RowModel, table=ItemTa
         store_offers = ItemStoreOfferTable.get_list_by_field(conn, "item_id", item.article_id)
         item.store_offers = [ItemStoreOffer(**dict(r)) for r in store_offers]
 
+        perks = ItemProficiencyPerkTable.get_list_by_field(
+            conn,
+            "item_id",
+            item.article_id,
+            sort_by="proficiency_level",
+        )
+        item.proficiency_perks = [ItemProficiencyPerk(**dict(r)) for r in perks]
+
         sounds = ItemSoundTable.get_list_by_field(conn, "item_id", item.article_id)
         item.sounds = [r["content"] for r in sounds]
 
@@ -384,7 +412,7 @@ class Key(WikiEntry, WithStatus, WithVersion, RowModel, table=ItemKeyTable):
     """The key's number."""
     item_id: int | None = None
     """The article id of the item this key is based on."""
-    material: str | None = None
+    material: str
     """The key's material."""
     location: str | None
     """The key's location."""
@@ -425,7 +453,7 @@ class Key(WikiEntry, WithStatus, WithVersion, RowModel, table=ItemKeyTable):
                 (
                     Query.from_(item_table)
                     .select(item_table.article_id)
-                    .where(item_table.title == Parameter(":material"))
+                    .where(item_table.title == LiteralValue(":material || ' Key'"))
                 ),
                 Parameter(":material"),
                 Parameter(":location"),
