@@ -98,6 +98,8 @@ class ItemParser(BaseParser):
         "is_rotatable": "rotatable",
         "augments": "augments",
         "elemental_bond": "elementalbond",
+        "slot": "slot",
+        "base_power": "basepower",
     }
 
     @classmethod

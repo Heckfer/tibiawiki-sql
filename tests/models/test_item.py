@@ -53,6 +53,32 @@ class TestItemParser(unittest.TestCase):
         self.assertIn("perfect_shot", item.attributes_dict)
         self.assertIn("perfect_shot_range", item.attributes_dict)
 
+    def test_item_parser_from_article_slot(self):
+        article = Article(
+            article_id=1,
+            title="Ruby Necklace",
+            timestamp=datetime.datetime.fromisoformat("2018-08-20T04:33:15+00:00"),
+            content=load_resource("content_item_slot.txt"),
+        )
+
+        item = ItemParser.from_article(article)
+
+        self.assertIsInstance(item, Item)
+        self.assertEqual("Neck", item.attributes_dict.get("slot"))
+
+    def test_item_parser_from_article_base_power(self):
+        article = Article(
+            article_id=1,
+            title="Sudden Death Rune",
+            timestamp=datetime.datetime.fromisoformat("2018-08-20T04:33:15+00:00"),
+            content=load_resource("content_item_base_power.txt"),
+        )
+
+        item = ItemParser.from_article(article)
+
+        self.assertIsInstance(item, Item)
+        self.assertEqual("150", item.attributes_dict.get("base_power"))
+
     def test_item_parser_from_article_damage_reflection(self):
         article = Article(
             article_id=1,
