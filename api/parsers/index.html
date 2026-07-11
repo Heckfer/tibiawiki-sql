@@ -13409,107 +13409,115 @@ It is called by <code>parse_article</code>.</p>
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span><span class="s2">&quot;damagetype&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="s2">&quot;mana&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="s2">&quot;base_power&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+
+
+  
+      classmethod
+   (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="s2">&quot;basepower&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_integer (tibiawikisql.utils.parse_integer)" href="../utils/#tibiawikisql.utils.parse_integer">parse_integer</a></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="p">),</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="s2">&quot;mana&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span><span class="s2">&quot;mana&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_integer (tibiawikisql.utils.parse_integer)" href="../utils/#tibiawikisql.utils.parse_integer">parse_integer</a></span><span class="p">),</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="s2">&quot;soul&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="s2">&quot;soul&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="s2">&quot;soul&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_integer (tibiawikisql.utils.parse_integer)" href="../utils/#tibiawikisql.utils.parse_integer">parse_integer</a></span><span class="p">,</span> <span class="mi">0</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="p">),</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="s2">&quot;cooldown&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            required
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="s2">&quot;soul&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_integer (tibiawikisql.utils.parse_integer)" href="../utils/#tibiawikisql.utils.parse_integer">parse_integer</a></span><span class="p">,</span> <span class="mi">0</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="p">),</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="s2">&quot;cooldown&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            required
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.required)" href="#tibiawikisql.parsers.base.AttributeParser.required">required</a></span><span class="p">(</span><span class="s2">&quot;cooldown&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="s2">&quot;cooldown2&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="s2">&quot;cooldown2&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span><span class="s2">&quot;cooldown2&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="s2">&quot;cooldown3&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="s2">&quot;cooldown3&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span><span class="s2">&quot;cooldown3&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="s2">&quot;cooldown_group&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="s2">&quot;cooldown_group&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="s2">&quot;cooldowngroup&quot;</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="p">),</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="s2">&quot;cooldown_group_secondary&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
-
-
-  
-      classmethod
-   (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="s2">&quot;cooldowngroup2&quot;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="s2">&quot;cooldowngroup&quot;</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="p">),</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="s2">&quot;cooldown_group_secondary&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="s2">&quot;levelrequired&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_integer (tibiawikisql.utils.parse_integer)" href="../utils/#tibiawikisql.utils.parse_integer">parse_integer</a></span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="s2">&quot;cooldowngroup2&quot;</span>
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="p">),</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="s2">&quot;is_premium&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="s2">&quot;premium&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="s2">&quot;levelrequired&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_integer (tibiawikisql.utils.parse_integer)" href="../utils/#tibiawikisql.utils.parse_integer">parse_integer</a></span>
 <a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="p">),</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="s2">&quot;is_promotion&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="s2">&quot;is_premium&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="s2">&quot;promotion&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="s2">&quot;premium&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
 <a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="p">),</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="s2">&quot;is_wheel_spell&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="s2">&quot;is_promotion&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="s2">&quot;wheelspell&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="s2">&quot;promotion&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
 <a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="p">),</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="s2">&quot;is_passive&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="s2">&quot;is_wheel_spell&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="s2">&quot;passivespell&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="s2">&quot;wheelspell&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="p">),</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="s2">&quot;is_passive&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
+
+
+  
+      classmethod
+   (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="s2">&quot;passivespell&quot;</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="            parse_boolean (tibiawikisql.utils.parse_boolean)" href="../utils/#tibiawikisql.utils.parse_boolean">parse_boolean</a></span><span class="p">,</span> <span class="kc">False</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="p">),</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            optional
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.optional)" href="#tibiawikisql.parsers.base.AttributeParser.optional">optional</a></span><span class="p">(</span><span class="s2">&quot;implemented&quot;</span><span class="p">),</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            status
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            AttributeParser (tibiawikisql.parsers.base.AttributeParser)" href="#tibiawikisql.parsers.base.AttributeParser">AttributeParser</a></span><span class="o">.</span><span class="n"><a class="autorefs autorefs-internal" title="            status
 
 
   
       classmethod
    (tibiawikisql.parsers.base.AttributeParser.status)" href="#tibiawikisql.parsers.base.AttributeParser.status">status</a></span><span class="p">(),</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="p">}</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="p">}</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -13634,19 +13642,19 @@ It is called by <code>parse_article</code>.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>tibiawikisql/parsers/spell.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-43">43</a></span>
 <span class="normal"><a href="#__codelineno-0-44">44</a></span>
 <span class="normal"><a href="#__codelineno-0-45">45</a></span>
 <span class="normal"><a href="#__codelineno-0-46">46</a></span>
 <span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="nd">@classmethod</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="k">def</span><span class="w"> </span><span class="nf">parse_attributes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">article</span><span class="p">:</span> <span class="n">Article</span><span class="p">):</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="n">row</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">parse_attributes</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="k">for</span> <span class="n">vocation</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;knight&quot;</span><span class="p">,</span> <span class="s2">&quot;sorcerer&quot;</span><span class="p">,</span> <span class="s2">&quot;druid&quot;</span><span class="p">,</span> <span class="s2">&quot;paladin&quot;</span><span class="p">,</span> <span class="s2">&quot;monk&quot;</span><span class="p">]:</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>        <span class="k">if</span> <span class="n">vocation</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;_raw_attributes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>            <span class="n">row</span><span class="p">[</span><span class="n">vocation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="k">return</span> <span class="n">row</span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="k">def</span><span class="w"> </span><span class="nf">parse_attributes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">article</span><span class="p">:</span> <span class="n">Article</span><span class="p">):</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="n">row</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">parse_attributes</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="k">for</span> <span class="n">vocation</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;knight&quot;</span><span class="p">,</span> <span class="s2">&quot;sorcerer&quot;</span><span class="p">,</span> <span class="s2">&quot;druid&quot;</span><span class="p">,</span> <span class="s2">&quot;paladin&quot;</span><span class="p">,</span> <span class="s2">&quot;monk&quot;</span><span class="p">]:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>        <span class="k">if</span> <span class="n">vocation</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;_raw_attributes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>            <span class="n">row</span><span class="p">[</span><span class="n">vocation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="k">return</span> <span class="n">row</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
