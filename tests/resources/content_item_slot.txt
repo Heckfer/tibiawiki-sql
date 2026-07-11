@@ -1,0 +1,24 @@
+{{Infobox Object|List={{{1|}}}|GetValue={{{GetValue|}}}
+| name          = Ruby Necklace
+| article       = a
+| actualname    = ruby necklace
+| plural        = ruby necklaces
+| itemid        = 3016
+| objectclass   = Body Equipment
+| primarytype   = Amulets and Necklaces
+| slot          = Neck
+| implemented   = 5.1
+| immobile      = no
+| walkable      = yes
+| pickupable    = yes
+| weight        = 5.70
+| marketable    = yes
+| droppedby     = {{Dropped By|Biting Book|Black Knight|Dawnfire Asura|Hellgorak|Lost Soul|Sineater Inferniarch|True Dawnfire Asura}}
+| value         = 2,000 - 3,560
+| npcvalue      = 2000
+| npcprice      = 3560
+| buyfrom       = Augustin, Briasol, Carina, Chantalle, Edmund, Gail, Hanna, Ishina, Iwan, Jessica, Nienna, Odemara, Oiriz, Talila, Tesha, Tezila, Valindara, Yonan
+| sellto        = Rashid
+| notes         = Only used as decoration.
+| history       = This was the first necklace that was once obtainable only in [[Daily Respawns]] in the [[Rain Castle]] of [[Thais]].
+}}

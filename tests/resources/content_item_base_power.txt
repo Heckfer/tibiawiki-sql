@@ -1,0 +1,33 @@
+<noinclude>
+:''This article is about the item called Sudden Death Rune. For the spell to create them, see [[Sudden Death]].''
+</noinclude>{{Infobox Object|List={{{1|}}}|GetValue={{{GetValue|}}}
+| name          = Sudden Death Rune
+| article       = a
+| actualname    = sudden death rune
+| plural        = ?
+| itemid        = 3155
+| objectclass   = Runes
+| primarytype   = Attack Runes
+| words         = adori gran mort
+| implemented   = 4.0
+| immobile      = no
+| walkable      = yes
+| pickupable    = yes
+| usable        = yes
+| levelrequired = 45
+| vocrequired   = monks, druids, sorcerers, paladins, knights
+| mlrequired    = 15
+| damagetype    = Death
+| weight        = 0.70
+| stackable     = yes
+| marketable    = yes
+| droppedby     = {{Dropped By|Gravedigger|Hand of Cursed Fate|Tyrn}}
+| value         = 162
+| storevalue    = {{Store Trades|{{Store Product|28|amount=250}}}}
+| npcvalue      = 0
+| npcprice      = 162
+| buyfrom       = Asima, Chartan, Chuckles, Fenech, Frans, Frederik, Ghorza, Gnomegica, Khanna, Mordecai, Nelly, Onfroi, Rabaz, Rachel, Rock In A Hard Place, Romir, Shiriel, Siflind, Sigurd, Talila, Tandros, Topsy, Valindara, Xodet
+| sellto        = --
+| basepower     = 150
+| notes         = Shoots a powerful [[Death Damage]] attack on a single target.
+}}

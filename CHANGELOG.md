@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add spell base power (`base_power`) to parser, schema and models.
+- Add `slot` and `base_power` to item attributes.
 
 ## 8.0.1 (2026-06-16)
 
